@@ -19,7 +19,7 @@
   .nav-social a{font-family:'Cinzel',serif;font-size:0.8rem;font-weight:bold;letter-spacing:0.15em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,168,76,0.3);padding:0.3rem 0.8rem;transition:all 0.3s}
   .nav-social a:hover{background:rgba(201,168,76,0.1)}
   .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(4rem + 70px) 2rem 4rem;overflow:hidden}
-  .hero-video{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;background-image:url('https://i.ibb.co/QvPQZ6c0/leononekenobi-I-want-a-background-image-inspiring-a-new-crypt-c9375f3c-dc41-40e3-ae3d-5385aef3a83a-3.png');background-size:cover;background-position:center}
+  .hero-video{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;background-image:url('https://lanthanides.netlify.app/media/leononekenobi_i_want_a_background_image_inspiring_a_new_crypt_721f12c3-db60-4bfb-b195-12b25aedb46c_3.mp4');background-size:cover;background-position:center}
   .hero-video video{width:100%;height:100%;object-fit:cover;display:block;opacity:0.55}
   .hero-video-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(4,6,8,0.35) 0%,rgba(4,6,8,0.20) 50%,rgba(4,6,8,0.65) 100%);z-index:1}
   .hero-content{position:relative;z-index:2}
@@ -49,7 +49,7 @@
   .feature h3{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem}
   .feature p{font-size:0.9rem;color:var(--muted);line-height:1.7}
   .crystal-section{position:relative;padding:6rem 2rem;text-align:center;overflow:hidden}
-  .crystal-section-bg{position:absolute;inset:0;background-image:url('https://i.ibb.co/MkP1GqVX/leononekenobi-I-want-a-background-image-inspiring-a-new-crypt-72d9cd06-eaa8-40c9-bc6e-b1d30880394f-2.png');background-size:cover;background-position:center;opacity:0.18}
+  .crystal-section-bg{position:absolute;inset:0;background-image:url('https://lanthanides.netlify.app/media/leononekenobi_i_want_a_background_image_inspiring_a_new_crypt_72d9cd06-eaa8-40c9-bc6e-b1d30880394f_2%20(1).png');background-size:cover;background-position:center;opacity:0.18}
   .crystal-section-overlay{position:absolute;inset:0;border-top:1px solid rgba(201,168,76,0.1);border-bottom:1px solid rgba(201,168,76,0.1)}
   .crystal-section>div{position:relative}
   .contract-box{border:1px solid rgba(201,168,76,0.25);background:rgba(201,168,76,0.04);padding:2rem;margin:2.5rem auto;max-width:700px}
@@ -168,6 +168,22 @@
   .ai-send:disabled{opacity:0.5;cursor:not-allowed}
   .ai-disc{font-size:0.65rem;color:var(--muted);opacity:0.5;margin-top:0.75rem;font-style:italic}
 
+  /* ══ HISTORY ══ */
+  .history-section{position:relative;padding:6rem 2rem;text-align:center;overflow:hidden}
+  .history-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(201,168,76,0.05) 0%,transparent 70%)}
+  .history-wrap{position:relative;max-width:900px;margin:0 auto}
+  .history-image-wrap{position:relative;max-width:700px;margin:2.5rem auto;display:block;width:100%}
+  .history-image{width:100%;display:block;border:1px solid rgba(201,168,76,0.2);opacity:0.88}
+  .history-element-card{position:relative;display:inline-block;background:rgba(4,6,8,0.88);border:1px solid rgba(201,168,76,0.4);padding:0.75rem 1rem;text-align:center;min-width:80px;margin:1rem auto;backdrop-filter:blur(8px)}
+  .element-number{font-family:"Cinzel",serif;font-size:0.6rem;color:var(--muted);letter-spacing:0.15em}
+  .element-symbol{font-family:"Cinzel",serif;font-size:2.2rem;font-weight:900;color:var(--gold-light);line-height:1;letter-spacing:0.05em}
+  .element-name{font-family:"Cinzel",serif;font-size:0.55rem;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.2rem}
+  .element-mass{font-family:"Courier New",monospace;font-size:0.6rem;color:var(--muted);margin-top:0.2rem}
+  .history-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:2rem;margin-top:3rem;text-align:left}
+  .history-block{border:1px solid rgba(201,168,76,0.12);padding:2rem 1.5rem;background:rgba(201,168,76,0.03)}
+  .history-block h3{font-family:"Cinzel",serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem}
+  .history-block p{font-size:0.9rem;color:var(--muted);line-height:1.8}
+  .history-block em{color:var(--gold-light);font-style:italic}
   @media(max-width:768px){
     nav{padding:1rem 1.5rem}
     .nav-links{display:none}
@@ -188,6 +204,7 @@
     <li><a href="#tokenomics">Tokenomics</a></li>
     <li><a href="#buy">Buy</a></li>
     <li><a href="#analytics">Analytics</a></li>
+    <li><a href="#history">History</a></li>
     <li><a href="#giveaway">Giveaway</a></li>
     <li><a href="#community">Community</a></li>
   </ul>
@@ -201,7 +218,7 @@
 <section class="hero">
   <div class="hero-video">
     <video autoplay muted loop playsinline preload="auto">
-      <source src="https://i.imgur.com/rxZAM1t.mp4" type="video/mp4">
+      <source src="https://lanthanides.netlify.app/media/leononekenobi_i_want_a_background_image_inspiring_a_new_crypt_721f12c3-db60-4bfb-b195-12b25aedb46c_3.mp4" type="video/mp4">
     </video>
   </div>
   <div class="hero-video-overlay"></div>
@@ -235,7 +252,7 @@
   <div style="max-width:900px;margin:0 auto;padding:0 2rem">
     <span class="section-label">Tokenomics</span>
     <h2 id="tokenomics">Simple. Transparent.<br><span>Fair launch.</span></h2>
-    <img src="https://i.ibb.co/MkP1GqVX/leononekenobi-I-want-a-background-image-inspiring-a-new-crypt-72d9cd06-eaa8-40c9-bc6e-b1d30880394f-2.png" alt="Lanthanides THULIUM" style="width:100%;max-width:700px;margin:0 auto 2.5rem;display:block;border:1px solid rgba(201,168,76,0.2);opacity:0.9;">
+    <img src="https://lanthanides.netlify.app/media/leononekenobi_i_want_a_background_image_inspiring_a_new_crypt_72d9cd06-eaa8-40c9-bc6e-b1d30880394f_2%20(1).png" alt="Lanthanides THULIUM" style="width:100%;max-width:700px;margin:0 auto 2.5rem;display:block;border:1px solid rgba(201,168,76,0.2);opacity:0.9;">
     <p>THULIUM was launched fairly with no pre-sale, no team allocation, and no venture capital. All 1,000,000 tokens were minted directly to the deployer wallet and added to public liquidity pools.</p>
     <div class="contract-box">
       <span class="contract-label">Token Contract Address &middot; Base Network</span>
@@ -305,6 +322,44 @@
 
 <div class="divider reveal"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
 
+<!-- ══ HISTORY SECTION ══ -->
+<div class="history-section reveal" id="history">
+  <div class="history-bg"></div>
+  <div class="history-wrap">
+    <span class="section-label">True History</span>
+    <h2>The Element Behind<br><span>the Token.</span></h2>
+    <div class="history-image-wrap">
+      <img src="https://lanthanides.netlify.app/media/leononekenobi_rotate_and_close_up_3d_--chaos_15_--ar_43_--sre_b3760200-9cd5-4b98-b7dd-196038e948d2_0~2.png" alt="Thulium Crystal" class="history-image">
+      <div class="history-element-card">
+        <div class="element-number">69</div>
+        <div class="element-symbol">Tm</div>
+        <div class="element-name">Thulium</div>
+        <div class="element-mass">168.934</div>
+      </div>
+    </div>
+    <div class="history-content">
+      <div class="history-block">
+        <h3>Discovered 1879</h3>
+        <p>Swedish chemist Per Teodor Cleve isolated Thulium while analysing erbia — a rare earth oxide — identifying two previously unknown elements hidden within. He named his discovery after <em>Thule</em>, the ancient Greek and Roman name for the farthest northern lands, believed to be Scandinavia.</p>
+      </div>
+      <div class="history-block">
+        <h3>One of Earth's Rarest</h3>
+        <p>Despite being more abundant than gold, Thulium is extraordinarily difficult and expensive to extract. It exists scattered across the Earth's crust in minuscule concentrations, never found in pure form — always hidden within other minerals, waiting to be discovered by those who look beyond the obvious.</p>
+      </div>
+      <div class="history-block">
+        <h3>Real World Applications</h3>
+        <p>Thulium powers portable X-ray machines, high-powered surgical lasers, nuclear reactor control rods, and high-temperature superconductors. An element of quiet but profound utility — rare, essential, and irreplaceable.</p>
+      </div>
+      <div class="history-block">
+        <h3>The Inspiration</h3>
+        <p>THULIUM the token inherits this philosophy — finite by nature, valuable by scarcity. A fixed supply of 1,000,000 tokens mirrors the element's rarity on Earth. The first of the Lanthanides series. More elements. More tokens. More scarcity.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider reveal"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
 <!-- ══ GIVEAWAY SECTION ══ -->
 <div class="giveaway-section reveal" id="giveaway">
   <div class="giveaway-bg"></div>
@@ -343,7 +398,7 @@
         </div>
       </div>
 
-      <a href="https://t.me/LanthanidesTm" target="_blank" class="giveaway-btn">
+      <a href="https://t.me/+qh8YvieRtMFkYTBh" target="_blank" class="giveaway-btn">
         ✦ Claim Your Entry · Join Telegram
       </a>
 
@@ -405,7 +460,7 @@
     <a href="https://discord.gg/9eYFEjGVZ" target="_blank" class="community-link">Discord &middot; Join Server</a>
     <a href="https://t.me/LanthanidesTm" target="_blank" class="community-link">Telegram &middot; @LanthanidesTm</a>
     <a href="https://basescan.org/token/0x0431f30c47fd0551eb30e9b9c8f007981fb0a6ad" target="_blank" class="community-link">Basescan &middot; View Contract</a>
-    <a href="https://github.com/harjdesign/Lanthanides-THULIUM" target="_blank" class="community-link">GitHub &middot; Lanthanides-THULIUM</a>
+    <a href="https://github.com/ArgeFaber/Lanthanides-THULIUM" target="_blank" class="community-link">GitHub &middot; Lanthanides-THULIUM</a>
   </div>
 </section>
 
@@ -418,7 +473,7 @@
     <a href="https://basescan.org/token/0x0431f30c47fd0551eb30e9b9c8f007981fb0a6ad" target="_blank">Basescan</a>
     <a href="https://aerodrome.finance" target="_blank">Aerodrome</a>
     <a href="https://app.uniswap.org" target="_blank">Uniswap</a>
-    <a href="https://github.com/harjdesign/Lanthanides-THULIUM" target="_blank">GitHub</a>
+    <a href="https://github.com/ArgeFaber/Lanthanides-THULIUM" target="_blank">GitHub</a>
   </div>
   <p class="footer-disclaimer">This is not financial advice. Cryptocurrency investments carry significant risk. Always do your own research before investing. THULIUM is an experimental token on the Base network.</p>
 </footer>
@@ -470,7 +525,7 @@ FACTS:
 - Twitter: https://x.com/LanthanidesTm
 - Telegram: https://t.me/LanthanidesTm
 - Discord: https://discord.gg/9eYFEjGVZ
-- GitHub: https://github.com/harjdesign/Lanthanides-THULIUM
+- GitHub: https://github.com/ArgeFaber/Lanthanides-THULIUM
 
 Never give financial advice or price predictions. Speak professionally.`;
 
