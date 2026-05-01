@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lanthanides (THULIUM) — Base Network Token</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;600;900&family=Cormorant+Garamond:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --gold:#c9a84c;--gold-light:#e8d08a;--gold-dark:#8a6d2f;--bg:#040608;--text:#f0e8d8;--muted:#8a8070; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;overflow-x:hidden}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:linear-gradient(to bottom,rgba(4,6,8,0.98),transparent);border-bottom:1px solid rgba(201,168,76,0.12)}
+  .nav-logo{font-family:'IM Fell English',serif;font-weight:700;font-size:1.2rem;letter-spacing:0.1em;color:var(--gold)}
+  .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
+  .nav-links a{font-family:'Cinzel',serif;font-size:0.8rem;font-weight:bold;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.3s}
+  .nav-links a:hover{color:var(--gold)}
+  .nav-social{display:flex;gap:1rem}
+  .nav-social a{font-family:'Cinzel',serif;font-size:0.8rem;font-weight:bold;letter-spacing:0.15em;color:var(--gold);text-decoration:none;border:1px solid rgba(201,168,76,0.3);padding:0.3rem 0.8rem;transition:all 0.3s}
+  .nav-social a:hover{background:rgba(201,168,76,0.1)}
+  .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(4rem + 70px) 2rem 4rem;overflow:hidden}
+  .hero-video{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;background-image:url('https://i.ibb.co/QvPQZ6c0/leononekenobi-I-want-a-background-image-inspiring-a-new-crypt-c9375f3c-dc41-40e3-ae3d-5385aef3a83a-3.png');background-size:cover;background-position:center}
+  .hero-video video{width:100%;height:100%;object-fit:cover;display:block;opacity:0.55}
+  .hero-video-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(4,6,8,0.35) 0%,rgba(4,6,8,0.20) 50%,rgba(4,6,8,0.65) 100%);z-index:1}
+  .hero-content{position:relative;z-index:2}
+  .hero-eyebrow{font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:0.85}
+  .hero h1{font-family:'Cinzel',serif;font-size:clamp(2.8rem,7vw,6rem);font-weight:900;letter-spacing:0.08em;line-height:1.05;color:var(--gold-light);text-shadow:0 2px 40px rgba(0,0,0,0.8);margin-bottom:0.3em}
+  .hero h1 span{display:block;font-family:'IM Fell English',serif;font-size:0.55em;font-weight:400;letter-spacing:0.2em;color:var(--text);opacity:0.75;margin-top:0.2em}
+  .hero-sub{font-size:1.05rem;font-weight:bold;color:var(--muted);max-width:520px;margin:1.5rem auto 2.5rem;line-height:1.7;letter-spacing:0.02em}
+  .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+  .btn-primary{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--bg);background:var(--gold);border:none;padding:0.9rem 2.2rem;text-decoration:none;transition:all 0.3s;cursor:pointer}
+  .btn-primary:hover{background:var(--gold-light)}
+  .btn-secondary{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid rgba(201,168,76,0.4);padding:0.9rem 2.2rem;text-decoration:none;transition:all 0.3s;cursor:pointer}
+  .btn-secondary:hover{background:rgba(201,168,76,0.08);border-color:var(--gold)}
+  .hero-scroll{position:absolute;bottom:-0.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:0.5rem;opacity:0.45}
+  .hero-scroll span{font-family:'Cinzel',serif;font-size:0.5rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold)}
+  .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s ease-in-out infinite}
+  @keyframes scrollPulse{0%,100%{opacity:0.4;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.1)}}
+  section{max-width:900px;margin:0 auto;padding:6rem 2rem;text-align:center}
+  section.hero{max-width:100%;width:100%;margin:0;padding-left:0;padding-right:0}
+  .section-label{display:inline-block;font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.25);padding:0.35rem 1rem;margin-bottom:2rem;opacity:0.8}
+  h2{font-family:'Cinzel',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:600;letter-spacing:0.06em;line-height:1.2;color:var(--text);margin-bottom:1.5rem}
+  h2 span{color:var(--gold)}
+  section>p,.crystal-section>div>p{color:var(--muted);max-width:600px;margin:0 auto 3rem;line-height:1.8}
+  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;margin-top:3rem;text-align:left}
+  .feature{border:1px solid rgba(201,168,76,0.12);padding:2rem 1.5rem;background:rgba(201,168,76,0.03);transition:border-color 0.3s}
+  .feature:hover{border-color:rgba(201,168,76,0.3)}
+  .feature-icon{font-size:1.8rem;display:block;margin-bottom:1rem}
+  .feature h3{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem}
+  .feature p{font-size:0.9rem;color:var(--muted);line-height:1.7}
+  .crystal-section{position:relative;padding:6rem 2rem;text-align:center;overflow:hidden}
+  .crystal-section-bg{position:absolute;inset:0;background-image:url('https://i.ibb.co/MkP1GqVX/leononekenobi-I-want-a-background-image-inspiring-a-new-crypt-72d9cd06-eaa8-40c9-bc6e-b1d30880394f-2.png');background-size:cover;background-position:center;opacity:0.18}
+  .crystal-section-overlay{position:absolute;inset:0;border-top:1px solid rgba(201,168,76,0.1);border-bottom:1px solid rgba(201,168,76,0.1)}
+  .crystal-section>div{position:relative}
+  .contract-box{border:1px solid rgba(201,168,76,0.25);background:rgba(201,168,76,0.04);padding:2rem;margin:2.5rem auto;max-width:700px}
+  .contract-label{display:block;font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem}
+  .contract-address{font-family:'Courier New',monospace;font-size:0.85rem;color:var(--gold);word-break:break-all;letter-spacing:0.05em}
+  .network-badge{display:inline-block;margin-top:1rem;font-family:'Cinzel',serif;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);border:1px solid rgba(201,168,76,0.15);padding:0.2rem 0.6rem}
+  .community-links{display:flex;flex-direction:column;gap:1rem;align-items:center;margin-top:2.5rem}
+  .community-link{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(201,168,76,0.2);padding:0.8rem 2.5rem;transition:all 0.3s;min-width:320px;text-align:center}
+  .community-link:hover{background:rgba(201,168,76,0.08);border-color:var(--gold)}
+  .divider{display:flex;align-items:center;gap:1rem;max-width:700px;margin:0 auto;padding:0 2rem}
+  .divider-line{flex:1;height:1px;background:rgba(201,168,76,0.15)}
+  .divider-diamond{width:8px;height:8px;border:1px solid rgba(201,168,76,0.5);transform:rotate(45deg);background:rgba(201,168,76,0.15)}
+  footer{border-top:1px solid rgba(201,168,76,0.1);padding:3rem 2rem;text-align:center}
+  .footer-logo{font-family:'IM Fell English',serif;font-size:1.1rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:1.5rem}
+  .footer-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:2rem}
+  .footer-links a{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.3s}
+  .footer-links a:hover{color:var(--gold)}
+  .footer-disclaimer{font-size:0.75rem;color:var(--muted);opacity:0.5;max-width:600px;margin:0 auto;line-height:1.6}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  /* ══ BUY WIDGET ══ */
+  .buy-widget-wrap{max-width:900px;margin:0 auto;padding:6rem 2rem;text-align:center}
+  .buy-widget{background:rgba(201,168,76,0.03);border:1px solid rgba(201,168,76,0.25);border-radius:4px;padding:2.5rem;max-width:480px;margin:2.5rem auto 0;position:relative;overflow:hidden}
+  .buy-widget::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .w-token-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(201,168,76,0.12)}
+  .w-token-info{display:flex;align-items:center;gap:0.75rem}
+  .w-token-dot{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:0.55rem;font-weight:700;color:var(--bg);box-shadow:0 0 16px rgba(201,168,76,0.25)}
+  .w-token-name{font-family:'Cinzel',serif;font-size:1rem;font-weight:600;color:var(--gold-light);letter-spacing:0.1em}
+  .w-token-net{font-size:0.65rem;color:var(--muted);font-family:'Cinzel',serif;letter-spacing:0.1em;margin-top:2px}
+  .w-price-label{font-family:'Cinzel',serif;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:3px}
+  .w-price-val{font-family:'Courier New',monospace;font-size:0.9rem;color:var(--gold);font-weight:700}
+  .live-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:#4ade80;margin-right:4px;animation:livePulse 2s infinite;vertical-align:middle}
+  @keyframes livePulse{0%,100%{opacity:1}50%{opacity:0.3}}
+  .w-amt-label{font-family:'Cinzel',serif;font-size:0.5rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);display:block;text-align:left;margin-bottom:0.5rem}
+  .w-amt-input{width:100%;background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.2);color:var(--gold-light);font-family:'Courier New',monospace;font-size:1rem;padding:0.7rem 1rem;outline:none;transition:border-color 0.3s;margin-bottom:0.5rem}
+  .w-amt-input:focus{border-color:rgba(201,168,76,0.6)}
+  .w-presets{display:flex;gap:0.4rem;margin-bottom:1.5rem}
+  .preset-btn{font-family:'Cinzel',serif;font-size:0.5rem;letter-spacing:0.1em;color:var(--muted);background:transparent;border:1px solid rgba(201,168,76,0.15);padding:0.3rem 0.6rem;cursor:pointer;transition:all 0.2s;flex:1}
+  .preset-btn:hover{border-color:var(--gold);color:var(--gold)}
+  .w-estimate{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.1);padding:0.75rem 1rem;margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center}
+  .est-label{font-family:'Cinzel',serif;font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)}
+  .est-val{font-family:'Courier New',monospace;font-size:0.85rem;color:var(--gold-light);font-weight:700}
+  .w-buy-btns{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem}
+  .w-btn-aero{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--bg);background:var(--gold);border:none;padding:0.9rem 1rem;text-decoration:none;transition:all 0.3s;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+  .w-btn-aero:hover{background:var(--gold-light)}
+  .w-btn-uni{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);background:transparent;border:1px solid rgba(201,168,76,0.4);padding:0.9rem 1rem;text-decoration:none;transition:all 0.3s;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+  .w-btn-uni:hover{background:rgba(201,168,76,0.08);border-color:var(--gold)}
+  .btn-sub{font-size:0.45rem;opacity:0.6;letter-spacing:0.1em}
+  .w-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(201,168,76,0.12);margin-top:1rem;padding-top:1rem}
+  .w-stat{text-align:center;border-right:1px solid rgba(201,168,76,0.1);padding:0 0.5rem}
+  .w-stat:last-child{border-right:none}
+  .w-stat-label{font-family:'Cinzel',serif;font-size:0.42rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:3px}
+  .w-stat-val{font-family:'Courier New',monospace;font-size:0.7rem;color:var(--gold);font-weight:700}
+
+  /* ══ PRICE TICKER ══ */
+  .buy-widget-wrap{max-width:900px;margin:0 auto;padding:6rem 2rem;text-align:center}
+  .price-ticker{background:rgba(201,168,76,0.03);border:1px solid rgba(201,168,76,0.25);border-radius:4px;padding:1.5rem 2rem;max-width:700px;margin:2rem auto 0;position:relative;overflow:hidden}
+  .price-ticker::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .ticker-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+  .ticker-token{display:flex;align-items:center;gap:0.75rem}
+  .ticker-stats{display:flex;gap:2rem;flex-wrap:wrap}
+  .ticker-stat{text-align:center}
+  .ticker-stat-label{font-family:"Cinzel",serif;font-size:0.45rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:3px}
+  .ticker-stat-val{font-family:"Courier New",monospace;font-size:0.85rem;color:var(--gold);font-weight:700;display:block}
+  /* ══ GIVEAWAY ══ */
+  .giveaway-section{position:relative;padding:6rem 2rem;text-align:center;overflow:hidden}
+  .giveaway-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,0.06) 0%,transparent 70%);border-top:1px solid rgba(201,168,76,0.1);border-bottom:1px solid rgba(201,168,76,0.1)}
+  .giveaway-wrap{position:relative;max-width:700px;margin:0 auto}
+  .giveaway-card{background:rgba(201,168,76,0.03);border:1px solid rgba(201,168,76,0.25);border-radius:4px;padding:2.5rem;position:relative;overflow:hidden}
+  .giveaway-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .giveaway-prize{padding:1.5rem 0 2rem;border-bottom:1px solid rgba(201,168,76,0.12);margin-bottom:2rem}
+  .prize-amount{font-family:"Cinzel",serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:900;color:var(--gold-light);letter-spacing:0.05em;line-height:1;text-shadow:0 0 40px rgba(201,168,76,0.3)}
+  .prize-label{font-family:"Cinzel",serif;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-top:0.5rem}
+  .giveaway-steps{display:flex;flex-direction:column;gap:1.25rem;margin-bottom:2rem;text-align:left}
+  .gstep{display:flex;gap:1.25rem;align-items:flex-start}
+  .gstep-num{font-family:"Cinzel",serif;font-size:0.65rem;font-weight:700;color:var(--gold);border:1px solid rgba(201,168,76,0.3);width:32px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:0.05em}
+  .gstep-text{padding-top:0.2rem}
+  .gstep-text strong{display:block;font-family:"Cinzel",serif;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.3rem}
+  .gstep-text span{font-size:0.85rem;color:var(--muted);line-height:1.6}
+  .giveaway-btn{display:block;font-family:"Cinzel",serif;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:1.1rem 2rem;text-decoration:none;transition:all 0.3s;margin-bottom:1rem}
+  .giveaway-btn:hover{background:var(--gold-light)}
+  .giveaway-note{font-size:0.7rem;color:var(--muted);opacity:0.6;font-style:italic;line-height:1.6}
+  /* ══ AI SECTION ══ */
+  .ai-section{position:relative;padding:6rem 2rem;text-align:center;border-top:1px solid rgba(201,168,76,0.08);border-bottom:1px solid rgba(201,168,76,0.08)}
+  .ai-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(201,168,76,0.04) 0%,transparent 70%)}
+  .ai-wrap{position:relative;max-width:900px;margin:0 auto}
+  .ai-panel{background:rgba(201,168,76,0.03);border:1px solid rgba(201,168,76,0.2);border-radius:4px;overflow:hidden;margin-top:2.5rem}
+  .ai-header{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.12);background:rgba(201,168,76,0.04)}
+  .ai-title{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold)}
+  .ai-online{display:flex;align-items:center;gap:6px;font-family:'Cinzel',serif;font-size:0.5rem;letter-spacing:0.15em;color:#4ade80}
+  .ai-body{padding:1.5rem}
+  .ai-chips{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.25rem;justify-content:center}
+  .ai-chip{font-family:'Cinzel',serif;font-size:0.5rem;letter-spacing:0.1em;color:var(--gold);border:1px solid rgba(201,168,76,0.25);padding:0.4rem 0.9rem;cursor:pointer;background:transparent;transition:all 0.2s}
+  .ai-chip:hover{background:rgba(201,168,76,0.08);border-color:var(--gold)}
+  .ai-chat{background:rgba(4,6,8,0.5);border:1px solid rgba(201,168,76,0.1);min-height:180px;max-height:280px;overflow-y:auto;padding:1rem 1.25rem;margin-bottom:1rem;text-align:left;scroll-behavior:smooth}
+  .ai-chat::-webkit-scrollbar{width:3px}
+  .ai-chat::-webkit-scrollbar-thumb{background:rgba(201,168,76,0.3)}
+  .ai-msg{margin-bottom:1rem;animation:fadeUp 0.4s ease}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .ai-role{font-family:'Cinzel',serif;font-size:0.45rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.3rem}
+  .ai-role.user{color:var(--muted)}
+  .ai-role.assistant{color:var(--gold)}
+  .ai-text{font-size:0.85rem;line-height:1.7;color:var(--text)}
+  .ai-text.user{color:var(--muted);font-style:italic}
+  .ai-thinking{display:flex;gap:4px;align-items:center;padding:0.5rem 0}
+  .think-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:thinkDot 1.2s infinite}
+  .think-dot:nth-child(2){animation-delay:0.2s}.think-dot:nth-child(3){animation-delay:0.4s}
+  @keyframes thinkDot{0%,100%{opacity:0.2;transform:scale(0.8)}50%{opacity:1;transform:scale(1.2)}}
+  .ai-input-row{display:flex;gap:0.5rem}
+  .ai-input{flex:1;background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.2);color:var(--text);font-family:'Cormorant Garamond',serif;font-size:0.9rem;padding:0.65rem 1rem;outline:none;transition:border-color 0.3s}
+  .ai-input:focus{border-color:rgba(201,168,76,0.5)}
+  .ai-input::placeholder{color:var(--muted);opacity:0.5;font-style:italic}
+  .ai-send{font-family:'Cinzel',serif;font-size:0.55rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--bg);background:var(--gold);border:none;padding:0.65rem 1.25rem;cursor:pointer;transition:background 0.3s}
+  .ai-send:hover{background:var(--gold-light)}
+  .ai-send:disabled{opacity:0.5;cursor:not-allowed}
+  .ai-disc{font-size:0.65rem;color:var(--muted);opacity:0.5;margin-top:0.75rem;font-style:italic}
+
+  @media(max-width:768px){
+    nav{padding:1rem 1.5rem}
+    .nav-links{display:none}
+    section{padding:4rem 1.5rem}
+    .crystal-section{padding:4rem 1.5rem}
+    .community-link{min-width:unset;width:100%}
+    .buy-widget{padding:1.5rem}
+    .w-buy-btns{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Lanthanides</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#tokenomics">Tokenomics</a></li>
+    <li><a href="#buy">Buy</a></li>
+    <li><a href="#analytics">Analytics</a></li>
+    <li><a href="#giveaway">Giveaway</a></li>
+    <li><a href="#community">Community</a></li>
+  </ul>
+  <div class="nav-social">
+    <a href="https://x.com/LanthanidesTm" target="_blank">X</a>
+    <a href="https://discord.gg/9eYFEjGVZ" target="_blank">Discord</a>
+    <a href="https://t.me/LanthanidesTm" target="_blank">Telegram</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-video">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="https://i.imgur.com/rxZAM1t.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-video-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow"><b>Lanthanides Series &middot; Base Network</b></p>
+    <h1>THULIUM<span>Element 69 &middot; THULIUM</span></h1>
+    <p class="hero-sub">A rare-earth token on Base — fixed supply, fair launch, locked liquidity. The first of the Lanthanides series.</p>
+    <div class="hero-actions">
+      <a href="#buy" class="btn-primary">Buy Thulium</a>
+      <a href="#tokenomics" class="btn-secondary">View Tokenomics</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<section id="about" class="reveal">
+  <span class="section-label">About Thulium</span>
+  <h2>Rare by nature.<br><span>Scarce by design.</span></h2>
+  <p>Thulium is one of the rarest lanthanide elements on Earth. THULIUM the token mirrors that scarcity — a fixed supply of 1,000,000 tokens, no minting, no inflation, launched fairly on the Base network.</p>
+  <div class="features">
+    <div class="feature"><span class="feature-icon">&#9879;&#65039;</span><h3>Fixed Supply</h3><p>1,000,000 THULIUM tokens. No minting, no inflation. Scarcity is guaranteed by the smart contract.</p></div>
+    <div class="feature"><span class="feature-icon">&#128274;</span><h3>Locked Liquidity</h3><p>Initial liquidity locked on Aerodrome Finance for 6 months, protecting holders and building trust.</p></div>
+    <div class="feature"><span class="feature-icon">&#9889;</span><h3>Base Network</h3><p>Fast, cheap transactions on Base — Ethereum's Layer 2 built by Coinbase with industry-leading security.</p></div>
+    <div class="feature"><span class="feature-icon">&#127760;</span><h3>Multi-DEX</h3><p>Available on both Aerodrome Finance and Uniswap, giving holders maximum flexibility to trade.</p></div>
+  </div>
+</section>
+
+<div class="crystal-section reveal">
+  <div class="crystal-section-bg"></div>
+  <div class="crystal-section-overlay"></div>
+  <div style="max-width:900px;margin:0 auto;padding:0 2rem">
+    <span class="section-label">Tokenomics</span>
+    <h2 id="tokenomics">Simple. Transparent.<br><span>Fair launch.</span></h2>
+    <img src="https://i.ibb.co/MkP1GqVX/leononekenobi-I-want-a-background-image-inspiring-a-new-crypt-72d9cd06-eaa8-40c9-bc6e-b1d30880394f-2.png" alt="Lanthanides THULIUM" style="width:100%;max-width:700px;margin:0 auto 2.5rem;display:block;border:1px solid rgba(201,168,76,0.2);opacity:0.9;">
+    <p>THULIUM was launched fairly with no pre-sale, no team allocation, and no venture capital. All 1,000,000 tokens were minted directly to the deployer wallet and added to public liquidity pools.</p>
+    <div class="contract-box">
+      <span class="contract-label">Token Contract Address &middot; Base Network</span>
+      <div class="contract-address">0x0431f30c47fd0551eb30e9b9c8f007981fb0a6ad</div>
+      <div class="network-badge">Base Mainnet &middot; ERC-20 &middot; 18 Decimals</div>
+    </div>
+    <div class="features">
+      <div class="feature"><span class="feature-icon">&#129689;</span><h3>Total Supply</h3><p>1,000,000 THULIUM — fixed forever. The contract has no mint function.</p></div>
+      <div class="feature"><span class="feature-icon">&#128167;</span><h3>Liquidity</h3><p>Dual liquidity pools on Aerodrome and Uniswap, with initial liquidity locked for 6 months.</p></div>
+      <div class="feature"><span class="feature-icon">&#128640;</span><h3>Fair Launch</h3><p>No presale. No VC allocation. Everyone gets the same entry price on the open market.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BUY SECTION ══ -->
+<div class="buy-widget-wrap reveal" id="buy">
+  <span class="section-label">Buy Thulium</span>
+  <h2>Acquire <span>THULIUM</span><br>in one click.</h2>
+  <p style="color:var(--muted);max-width:520px;margin:0 auto;line-height:1.8">Connect your Base wallet and swap ETH for THULIUM instantly on your preferred exchange.</p>
+
+  <div class="price-ticker">
+    <div class="ticker-inner">
+      <div class="ticker-token">
+        <div class="w-token-dot">TM</div>
+        <div>
+          <div class="w-token-name">THULIUM</div>
+          <div class="w-token-net">Base Network · ERC-20</div>
+        </div>
+      </div>
+      <div class="ticker-stats">
+        <div class="ticker-stat">
+          <span class="ticker-stat-label"><span class="live-dot"></span>Live Price</span>
+          <span class="ticker-stat-val" id="livePrice">Fetching...</span>
+        </div>
+        <div class="ticker-stat">
+          <span class="ticker-stat-label">Supply</span>
+          <span class="ticker-stat-val">1,000,000</span>
+        </div>
+        <div class="ticker-stat">
+          <span class="ticker-stat-label">Network</span>
+          <span class="ticker-stat-val">Base L2</span>
+        </div>
+        <div class="ticker-stat">
+          <span class="ticker-stat-label">Liquidity</span>
+          <span class="ticker-stat-val">🔒 Locked</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="buy-grid" style="margin-top:2rem">
+    <a href="https://aerodrome.finance/swap?from=0x4200000000000000000000000000000000000006&to=0x0431f30c47fd0551eb30e9b9c8f007981fb0a6ad" target="_blank" class="buy-card">
+      <span class="buy-card-name">Aerodrome</span>
+      <span class="buy-card-desc">Base's leading DEX · Locked Liquidity</span>
+    </a>
+    <a href="https://app.uniswap.org/swap?outputCurrency=0x0431f30c47fd0551eb30e9b9c8f007981fb0a6ad&chain=base" target="_blank" class="buy-card">
+      <span class="buy-card-name">Uniswap</span>
+      <span class="buy-card-desc">The world's largest DEX · Base network</span>
+    </a>
+  </div>
+
+  <div class="contract-box" style="margin-top:2rem">
+    <span class="contract-label">Paste this contract address to find THULIUM in your wallet</span>
+    <div class="contract-address">0x0431f30c47fd0551eb30e9b9c8f007981fb0a6ad</div>
+  </div>
+</div>
+
+<div class="divider reveal"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+<!-- ══ GIVEAWAY SECTION ══ -->
+<div class="giveaway-section reveal" id="giveaway">
+  <div class="giveaway-bg"></div>
+  <div class="giveaway-wrap">
+    <span class="section-label">Win Free THULIUM</span>
+    <h2>Community<br><span>Giveaway.</span></h2>
+    <p style="color:var(--muted);max-width:540px;margin:0 auto 2.5rem;line-height:1.8">Win free THULIUM tokens every month. Enter by posting about THULIUM and joining our Telegram — one winner drawn from the community each month.</p>
+
+    <div class="giveaway-card">
+      <div class="giveaway-prize">
+        <div class="prize-amount">10,000</div>
+        <div class="prize-label">THULIUM to be won this month</div>
+      </div>
+
+      <div class="giveaway-steps">
+        <div class="gstep">
+          <div class="gstep-num">01</div>
+          <div class="gstep-text">
+            <strong>Post about THULIUM</strong>
+            <span>Share on Twitter/X, Telegram, Discord or any platform. Tag us or use #THULIUM #Lanthanides</span>
+          </div>
+        </div>
+        <div class="gstep">
+          <div class="gstep-num">02</div>
+          <div class="gstep-text">
+            <strong>Join our Telegram</strong>
+            <span>Become a member of the Lanthanides community on Telegram to be eligible for the draw</span>
+          </div>
+        </div>
+        <div class="gstep">
+          <div class="gstep-num">03</div>
+          <div class="gstep-text">
+            <strong>Submit your entry</strong>
+            <span>Share your post link in our Telegram — winners drawn monthly by the community</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://t.me/LanthanidesTm" target="_blank" class="giveaway-btn">
+        ✦ Claim Your Entry · Join Telegram
+      </a>
+
+      <p class="giveaway-note">No purchase necessary. Open to legal US residents 18+, void where prohibited by law. Odds of winning depend on total number of entries received. THULIUM tokens have no guaranteed monetary value. Winner selected randomly and announced in Telegram. Must hold a Base-compatible wallet to receive prize. Full official rules available in our Telegram channel. Sponsor: Lanthanides Project.</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider reveal"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+<!-- ══ AI ANALYTICS ══ -->
+<div class="ai-section reveal" id="analytics">
+  <div class="ai-bg"></div>
+  <div class="ai-wrap">
+    <span class="section-label">AI Analytics</span>
+    <h2>Ask anything about<br><span>THULIUM.</span></h2>
+    <p style="color:var(--muted);max-width:540px;margin:0 auto 0;line-height:1.8">Our AI analyst knows THULIUM inside out — tokenomics, how to buy, what makes it unique, and more.</p>
+
+    <div class="ai-panel">
+      <div class="ai-header">
+        <span class="ai-title">✨ THULIUM AI Analyst</span>
+        <span class="ai-online"><span class="live-dot"></span>Online</span>
+      </div>
+      <div class="ai-body">
+        <div class="ai-chips">
+          <button class="ai-chip" onclick="ask('What makes THULIUM unique?')">What makes THULIUM unique?</button>
+          <button class="ai-chip" onclick="ask('How do I buy THULIUM?')">How do I buy THULIUM?</button>
+          <button class="ai-chip" onclick="ask('What is the total supply?')">What is the total supply?</button>
+          <button class="ai-chip" onclick="ask('Is the liquidity locked?')">Is the liquidity locked?</button>
+          <button class="ai-chip" onclick="ask('What blockchain is THULIUM on?')">What blockchain is it on?</button>
+          <button class="ai-chip" onclick="ask('Is there a team allocation?')">Is there a team allocation?</button>
+        </div>
+
+        <div class="ai-chat" id="aiChat">
+          <div class="ai-msg">
+            <div class="ai-role assistant">THULIUM Analyst</div>
+            <div class="ai-text">Welcome. I am the THULIUM analyst — ask me anything about the Lanthanides (THULIUM) token. Tokenomics, how to buy, the smart contract, liquidity, or the project vision.</div>
+          </div>
+        </div>
+
+        <div class="ai-input-row">
+          <input type="text" class="ai-input" id="aiIn" placeholder="Ask about THULIUM..." onkeydown="if(event.key==='Enter')sendMsg()">
+          <button class="ai-send" id="aiBtn" onclick="sendMsg()">Ask</button>
+        </div>
+        <p class="ai-disc">AI responses are informational only. Not financial advice.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider reveal"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+<section id="community" class="reveal">
+  <span class="section-label">Community</span>
+  <h2>Join the<br><span>Lanthanides community.</span></h2>
+  <p>Follow us on Twitter/X for updates and join our Discord to connect with other holders and discuss the future of Lanthanides.</p>
+  <div class="community-links">
+    <a href="https://x.com/LanthanidesTm" target="_blank" class="community-link">&#120143; Twitter &middot; @LanthanidesTm</a>
+    <a href="https://discord.gg/9eYFEjGVZ" target="_blank" class="community-link">Discord &middot; Join Server</a>
+    <a href="https://t.me/LanthanidesTm" target="_blank" class="community-link">Telegram &middot; @LanthanidesTm</a>
+    <a href="https://basescan.org/token/0x0431f30c47fd0551eb30e9b9c8f007981fb0a6ad" target="_blank" class="community-link">Basescan &middot; View Contract</a>
+    <a href="https://github.com/harjdesign/Lanthanides-THULIUM" target="_blank" class="community-link">GitHub &middot; Lanthanides-THULIUM</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Lanthanides</div>
+  <div class="footer-links">
+    <a href="https://x.com/LanthanidesTm" target="_blank">X</a>
+    <a href="https://discord.gg/9eYFEjGVZ" target="_blank">Discord</a>
+    <a href="https://t.me/LanthanidesTm" target="_blank">Telegram</a>
+    <a href="https://basescan.org/token/0x0431f30c47fd0551eb30e9b9c8f007981fb0a6ad" target="_blank">Basescan</a>
+    <a href="https://aerodrome.finance" target="_blank">Aerodrome</a>
+    <a href="https://app.uniswap.org" target="_blank">Uniswap</a>
+    <a href="https://github.com/harjdesign/Lanthanides-THULIUM" target="_blank">GitHub</a>
+  </div>
+  <p class="footer-disclaimer">This is not financial advice. Cryptocurrency investments carry significant risk. Always do your own research before investing. THULIUM is an experimental token on the Base network.</p>
+</footer>
+
+<script>
+// ── Reveal
+async function fetchEth(){try{const r=await fetch("https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd");const d=await r.json();return d.ethereum.usd;}catch(e){return 2282;}}
+async function updatePrice(){const ethUsd=await fetchEth();const p=(0.008/19990)*ethUsd;document.getElementById("livePrice").textContent=p<0.001?"$"+p.toFixed(6):"$"+p.toFixed(4);}
+updatePrice();setInterval(updatePrice,30000);
+const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ── Price widget
+let ethUsd = 2282;
+async function fetchEth(){try{const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd');const d=await r.json();ethUsd=d.ethereum.usd;}catch(e){}}
+function updateEst(){
+  const eth=parseFloat(document.getElementById('ethAmt').value)||0;
+  const el=document.getElementById('estVal');
+  if(eth<=0){el.textContent='— THULIUM';return;}
+  const pw=0.008,pt=19990,ein=eth*0.997;
+  const out=pt-(pw*pt)/(pw+ein);
+  el.textContent=(out>0&&out<pt*0.95)?Math.floor(out).toLocaleString()+' THULIUM':'⚠ Exceeds liquidity';
+}
+function setAmt(v){document.getElementById('ethAmt').value=v;updateEst();}
+async function updatePrice(){
+  await fetchEth();
+  const p=(0.008/19990)*ethUsd;
+  document.getElementById('livePrice').textContent=p<0.001?'$'+p.toFixed(6):'$'+p.toFixed(4);
+  updateEst();
+}
+updatePrice();setInterval(updatePrice,30000);
+
+// ── AI
+const SYS=`You are the official AI analyst for Lanthanides (THULIUM), a cryptocurrency token. Answer concisely (2-4 sentences).
+
+FACTS:
+- Name: Lanthanides, Symbol: THULIUM
+- Contract: 0x0431f30c47fd0551eb30e9b9c8f007981fb0a6ad
+- Blockchain: Base (Ethereum L2, Chain ID 8453), ERC-20, 18 decimals
+- Supply: 1,000,000 THULIUM hard capped, no mint function
+- Launch: April 26 2026, fair launch, no presale, no team allocation, no VC
+- No mint, no owner privileges, no pause/blacklist — fully immutable
+- OpenZeppelin ERC-20, verified on Basescan
+- Inspired by rare earth element Thulium (element 69)
+- Liquidity: Aerodrome Finance (locked 6 months) + Uniswap V4 on Base
+- Buy Aerodrome: https://aerodrome.finance/swap?from=0x4200000000000000000000000000000000000006&to=0x0431f30c47fd0551eb30e9b9c8f007981fb0a6ad
+- Buy Uniswap: https://app.uniswap.org/swap?outputCurrency=0x0431f30c47fd0551eb30e9b9c8f007981fb0a6ad&chain=base
+- Website: https://lanthanides.netlify.app
+- Twitter: https://x.com/LanthanidesTm
+- Telegram: https://t.me/LanthanidesTm
+- Discord: https://discord.gg/9eYFEjGVZ
+- GitHub: https://github.com/harjdesign/Lanthanides-THULIUM
+
+Never give financial advice or price predictions. Speak professionally.`;
+
+let history=[];
+
+async function sendMsg(){
+  const inp=document.getElementById('aiIn');
+  const btn=document.getElementById('aiBtn');
+  const chat=document.getElementById('aiChat');
+  const msg=inp.value.trim();
+  if(!msg||btn.disabled)return;
+  inp.value='';btn.disabled=true;
+  addMsg('user','You',msg);
+  history.push({role:'user',content:msg});
+  const t=document.createElement('div');
+  t.className='ai-thinking';
+  t.innerHTML='<div class="think-dot"></div><div class="think-dot"></div><div class="think-dot"></div>';
+  chat.appendChild(t);chat.scrollTop=chat.scrollHeight;
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYS,messages:history})});
+    const data=await res.json();
+    const reply=data.content?.[0]?.text||'Unable to retrieve answer at this time.';
+    history.push({role:'assistant',content:reply});
+    chat.removeChild(t);addMsg('assistant','THULIUM Analyst',reply);
+  }catch(e){
+    chat.removeChild(t);addMsg('assistant','THULIUM Analyst','The oracle is momentarily unavailable. Please try again.');
+  }
+  btn.disabled=false;inp.focus();
+}
+
+function addMsg(role,label,text){
+  const chat=document.getElementById('aiChat');
+  const d=document.createElement('div');
+  d.className='ai-msg';
+  d.innerHTML=`<div class="ai-role ${role}">${label}</div><div class="ai-text ${role}">${text}</div>`;
+  chat.appendChild(d);chat.scrollTop=chat.scrollHeight;
+}
+
+function ask(q){document.getElementById('aiIn').value=q;sendMsg();}
+</script>
+</body>
+</html>
